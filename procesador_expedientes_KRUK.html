@@ -6104,11 +6104,11 @@ function normalize(str) {
 // Auto-detect which column contains full addresses (prefer columns with CP 5-digit blocks)
 function detectAddressColumn(headers, sampleRows) {
   // First try known address column names
-  const knownAddr = headers.find(h => h && (h.toLowerCase().includes("address") || h.toLowerCase().includes("direcc") || h.toLowerCase().includes("legal addr") || h.toLowerCase().includes("mailing")));
+  const knownAddr = headers.find(h => h && (h.toLowerCase().includes("address") || h.toLowerCase().includes("adrees") || h.toLowerCase().includes("adress") || h.toLowerCase().includes("direcc") || h.toLowerCase().includes("legal addr") || h.toLowerCase().includes("mailing") || h.toLowerCase().includes("general data")));
   if (knownAddr) return knownAddr;
 
   // Exclude columns that are clearly not addresses
-  const excluded = new Set(["Whole Case Number", "Original Contract Number", "EXP KMALEON", "NIG", "Client Name", "Client ID", "Client ID 1", "Client's ID", "Client's Name", "PROCURADOR", "PROCURADOR ", "Portfolio", "Name of Portfolio", "AMOUNT", "Amount for execution", "Tipo de Procedimiento", "tipo procedimiento", "JUZGADO", "Court", "CITY COURT", "City Court", "AUTOS", "autos"]);
+  const excluded = new Set(["Whole Case Number", "Original Contract Number", "EXP KMALEON", "EXP KML", "EXP", "NIG", "Client Name", "Client ID", "Client ID 1", "Client's ID", "Client's Name", "PROCURADOR", "PROCURADOR ", "Portfolio", "Name of Portfolio", "AMOUNT", "Amount for execution", "Tipo de Procedimiento", "tipo procedimiento", "JUZGADO", "Court", "CITY COURT", "City Court", "AUTOS", "autos"]);
   const scores = {};
   headers.forEach(h => {
     if (!h || excluded.has(h)) return;
