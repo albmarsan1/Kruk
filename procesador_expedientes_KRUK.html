@@ -6074,7 +6074,7 @@ const CARTERAS = {
   "Santander Consumer Finance, S.A": "SANTANDER CONSUMER FINANCE SA",
   "ABANCA CORPORACION BANCARIA, S.A.": "ABANCA CORPORACION BANCARIA S.A.",
   "AutonoriaSpain": "AUTONORIA SPAIN",
-  "Cabin Othar, S.A.R.L.": "CABIN OTHAR, S.A.R.L.", "Zaplo": "ZAPLO", "BIGBANK": "BIGBANK", "Xfera": "XFERA",
+  "Cabin Othar, S.A.R.L.": "CABIN OTHAR, S.A.R.L.", "Zaplo": "ZAPLO", "BIGBANK": "BIGBANK", "Xfera": "XFERA", "NORIA SPAIN": "NORIA SPAIN", "BBVA": "BBVA", "TELEFONICA": "TELEFONICA",
   "TELEFÓNICA CONSUMER FINANCE, E.F.C., S.A.": "TELEFONICA CONSUMER FINANCE, E.F.C., S.A.",
   "IPF Digital Spain": "IPF DIGITAL SPAIN"
 };
@@ -6089,6 +6089,7 @@ function isCatalunya(cp) {
 function getTipoProcedimiento(tipoRaw, poblacionNorm) {
   const t = String(tipoRaw || "").trim().toUpperCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
   if (t.includes("MONITORIO")) return "MONITORIO #MON#";
+  if (t.includes("NO JUDICIALES") || t.includes("NO JUDICIAL")) return "EJECUCION DE TITULOS NO JUDICIALES #ENJ#";
   if (t.includes("ORDINARIO")) return "PROCEDIMIENTO ORDINARIO #ORD#";
   if (t.includes("VERBAL")) {
     const key = String(poblacionNorm || "").toUpperCase().trim().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/\s+/g, " ");
