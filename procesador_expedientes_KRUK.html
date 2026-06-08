@@ -6309,7 +6309,7 @@ function formatCuantia(val) {
 
 // Auto-detect tipo procedimiento column
 function detectTipoCol(headers, sampleRows) {
-  const known = headers.find(h => h && (h.toLowerCase().trim().includes("tipo") || h.toLowerCase().trim().includes("procedimiento")));
+  const known = headers.find(h => h && (h.toLowerCase().trim().includes("tipo") || h.toLowerCase().trim().includes("procedimiento") || h.toLowerCase().trim().includes("type of proceeding") || h.toLowerCase().trim().includes("proceeding")));
   if (known) return known;
   return headers.find(h => {
     if (!h) return false;
